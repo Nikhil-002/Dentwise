@@ -2,9 +2,27 @@ import Navbar from "@/components/Navbar"
 
 function dashboard() {
   return (
-    <div>
+    <div className="flex justify-center align-items mt-24">
       <Navbar />
-      DASHBOARD PAGE
+      <div className="flex flex-col justify-center align-items gap-10">
+        <div className="w-12 h-12 bg-red-500">
+
+        </div>
+        <div className="w-12 h-12 bg-red-500">
+
+        </div>
+        <div className="w-12 h-12 bg-red-500">
+
+        </div>
+        <div className="w-12 h-12 bg-red-500">
+
+        </div><div className="w-12 h-12 bg-red-500">
+
+        </div>
+        <div className="w-12 h-12 bg-red-500">
+
+        </div>
+      </div>
     </div>
   )
 }

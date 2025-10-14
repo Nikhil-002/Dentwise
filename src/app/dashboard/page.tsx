@@ -1,30 +1,19 @@
-import Navbar from "@/components/Navbar"
+import ActivityOverview from "@/components/dashboard/ActivityOverview";
+import MainActions from "@/components/dashboard/MainActions";
+import WelcomeSection from "@/components/dashboard/WelcomeSection";
+import Navbar from "@/components/Navbar";
 
-function dashboard() {
+function DashboardPage() {
   return (
-    <div className="flex justify-center align-items mt-24">
+    <>
       <Navbar />
-      <div className="flex flex-col justify-center align-items gap-10">
-        <div className="w-12 h-12 bg-red-500">
 
-        </div>
-        <div className="w-12 h-12 bg-red-500">
-
-        </div>
-        <div className="w-12 h-12 bg-red-500">
-
-        </div>
-        <div className="w-12 h-12 bg-red-500">
-
-        </div><div className="w-12 h-12 bg-red-500">
-
-        </div>
-        <div className="w-12 h-12 bg-red-500">
-
-        </div>
+      <div className="max-w-7xl mx-auto px-6 py-8 pt-24">
+        <WelcomeSection />
+        <MainActions />
+        <ActivityOverview />
       </div>
-    </div>
-  )
+    </>
+  );
 }
-
-export default dashboard
+export default DashboardPage;

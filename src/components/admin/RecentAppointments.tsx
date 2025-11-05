@@ -1,9 +1,9 @@
+import { useGetAppointments, useUpdateAppointmentStatus } from "@/hooks/use-appointments";
 import { Badge } from "../ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
 import { Calendar } from "lucide-react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../ui/table";
 import { Button } from "../ui/button";
-import { useGetAppointments, useUpdateAppointmentStatus } from "@/hooks/use-appointments";
 
 function RecentAppointments() {
   const { data: appointments = [] } = useGetAppointments();

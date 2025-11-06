@@ -3,6 +3,7 @@
 import { auth } from "@clerk/nextjs/server";
 import { prisma } from "../prisma"
 import { AppointmentStatus } from "@prisma/client";
+import { revalidatePath } from "next/cache";
 
 
 function transformAppointments(appointment: any) {
@@ -15,7 +16,7 @@ function transformAppointments(appointment: any) {
         date: appointment.date.toISOString().split("T")[0]
     }
 }
-
+ 
 export async function getAppointments() {
     try {
         const appointments = await prisma.appointment.findMany({
@@ -26,7 +27,7 @@ export async function getAppointments() {
                         lastName : true,
                         email : true,                   
                     }
-                },
+                }, 
                 doctor : {
                     select : {
                         name : true,
@@ -224,7 +225,7 @@ export async function updateAppointmentStatus(input: { id: string; status: Appoi
       where: { id: input.id },
       data: { status: input.status },
     });
-
+    revalidatePath("/admin")
     return appointment;
   } catch (error) {
     console.error("Error updating appointment:", error); 

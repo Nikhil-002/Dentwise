@@ -1,4 +1,4 @@
-import { SignInButton, SignOutButton, SignUpButton } from '@clerk/nextjs'
+import { SignInButton, SignUpButton } from '@clerk/nextjs'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -25,6 +25,7 @@ function Header() {
                 </a>
             </div>
 
+            {/* SignUp and LogIn button coming directly from Clerk ->  */}
             <div className='flex items-center gap-3'>
                 <SignInButton mode='modal'>
                     <Button variant={"ghost"} size={"sm"} className='p-4 rounded-2xl' >

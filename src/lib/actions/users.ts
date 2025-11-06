@@ -6,19 +6,20 @@ import { prisma } from "../prisma"
 export async function syncUser() {
     
     try {
-        const user = await currentUser()
-        if(!user) return 
-        // console.log("user" , user);
+        const user = await currentUser()  // checking if the user logged in or exist in clerk // exist only if they signed up before else no
+        if(!user) return // if not signed up before return 
         
-
+        // else check in the user table where the ClerkId match
         const existingUser = await prisma.user.findUnique({
             where : {
                 clerkId: user.id
             }
         })
+        //if matched then return users Details 
         if(existingUser)
             return existingUser;
 
+        // else create a new user into the User database
         const dbUser = await prisma.user.create({
             data: {
                 clerkId : user.id,
@@ -28,10 +29,9 @@ export async function syncUser() {
                 phone : user.phoneNumbers[0]?.phoneNumber
             }
         })
-
+        // return that user
         return dbUser
     } catch (error) {
-        console.log("Error in syncUser server action", error);
-        
+        console.error("Error in syncUser server action", error);        
     }
 }
